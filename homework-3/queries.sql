@@ -18,7 +18,7 @@ INNER JOIN categories USING(category_id)
 INNER JOIN suppliers USING(supplier_id)
 WHERE categories.category_name IN ('Dairy Products', 'Condiments')
       AND products.discontinued=0
-	  AND products.units_in_stock < 25
+      AND products.units_in_stock < 25
 ORDER BY products.units_in_stock
 
 -- 3. Список компаний заказчиков (company_name из табл customers), не сделавших ни одного заказа
@@ -31,4 +31,4 @@ WHERE customers.customer_id NOT IN(SELECT customer_id FROM orders)
 -- Этот запрос написать именно с использованием подзапроса.
 SELECT DISTINCT product_name FROM products
 WHERE product_id IN (SELECT product_id FROM order_details
-			         WHERE quantity=10)
+		     WHERE quantity=10)

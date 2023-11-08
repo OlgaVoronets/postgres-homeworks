@@ -23,6 +23,9 @@ def fill_table(data, table, base):
             with connection.cursor() as cursor:
                 for dict_ in data:
                     cursor.execute(f'INSERT INTO {table} VALUES ({quantity})', tuple(dict_.values()))
+                connection.commit()
+    except:
+        connection.rollback()
     finally:
         connection.close()
 
@@ -31,8 +34,3 @@ employees_list = get_data_from_csv('employees_data.csv')
 customers_list = get_data_from_csv('customers_data.csv')
 orders_list = get_data_from_csv('orders_data.csv')
 base = 'north'
-
-
-# fill_table(employees_list, 'employees', base)
-# fill_table(customers_list, 'customers', base)
-# fill_table(orders_list, 'orders', base)

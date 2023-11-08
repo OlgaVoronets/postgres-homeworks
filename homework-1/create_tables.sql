@@ -3,7 +3,7 @@
 CREATE TABLE employees
 (
 	employee_id int PRIMARY KEY NOT NULL,
-    first_name varchar(100),
+        first_name varchar(100),
 	last_name varchar(100),
 	title varchar(100),
 	birth_date date,
